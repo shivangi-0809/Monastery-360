@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monastery360</title>
+  <link rel="stylesheet" href="new.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"/>
+  
+</head>
+<!-- VR Video Modal -->
+<div id="vrModal" class="vr-modal">
+  <span class="close-vr" onclick="closeVRModal()">&times;</span>
+  <iframe id="vrIframe" src="" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+</div>
+
+<body>
+  <!-- Top Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+     <span class="hamburger" onclick="toggleSidebar()">&#9776;</span>
+    <a class="navbar-brand" href="#">Monastery360</a>
+    <button class="navbar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Map</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Tour</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+         <ul class="navbar-nav ms-auto">
+  <li class="nav-item"><a class="nav-link" href="newsignup.html">Signup</a></li>
+  <li class="nav-item"><a class="nav-link" href="login-role.html">Login</a></li>
+</ul>
+
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
+    <a href="#">History</a>
+    <a href="#">Map</a>
+    <a href="#">News</a>
+    <a href="#">Events</a>
+    <a href="#">Calendar</a>
+    <a href="#">Culture</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay text-center text-white">
+      <h1>MONASTERY 360</h1>
+      <p>Explore over 200 monasteries through immersive virtual tours, discover ancient wisdom, and connect with living tradition.</p>
+       <div class="cta-buttons mt-4">
+        <a href="#" class="btn btn-primary m-2">Explore 360° Tours</a>
+        <a href="#" class="btn btn-success m-2">Find Monasteries on Map</a>
+        <a href="#" class="btn btn-warning m-2">Upcoming Festivals & Events</a>
+        <a href="#" class="btn btn-info m-2">Download the App</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Monasteries Section -->
+<section class="monasteries py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Explore Monasteries</h2>
+    <div class="row g-4">
+      
+      <!-- Card 1 -->
+      <div class="col-md-4 fade-in-up">
+        <div class="card h-100 shadow">
+          <img src="rumtek.webp" class="card-img-top" alt="Monastery 1">
+          <div class="card-body text-center">
+            <h5 class="card-title">Rumtek Monastery</h5>
+            <p class="card-text">One of the largest and most significant monasteries in Sikkim.</p>
+            <a href="rumtek-history.html" class="btn btn-primary m-1">Read More</a>
+            <a href="rumtek-tour.html" class="btn btn-success m-1">360° View</a>
+            <a href="rumtek-map.html" class="btn btn-info m-1">On Map</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4 fade-in-up">
+        <div class="card h-100 shadow">
+          <img src="Pemayangtse Monastery.jpeg" class="card-img-top" alt="Monastery 2">
+          <div class="card-body text-center">
+            <h5 class="card-title">Pemayangtse Monastery</h5>
+            <p class="card-text">Historic monastery with stunning views of Kanchenjunga.</p>
+            <a href="#" class="btn btn-primary m-1">Read More</a>
+            <a href="#" class="btn btn-success m-1">360° View</a>
+            <a href="#" class="btn btn-info m-1">On Map</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4 fade-in-up">
+        <div class="card h-100 shadow">
+          <img src="Tashiding Monastery.jpg" class="card-img-top" alt="Monastery 3">
+          <div class="card-body text-center">
+            <h5 class="card-title">Tashiding Monastery</h5>
+            <p class="card-text">Sacred site known for the Bhumchu festival.</p>
+            <a href="#" class="btn btn-primary m-1">Read More</a>
+            <a href="#" class="btn btn-success m-1">360° View</a>
+            <a href="#" class="btn btn-info m-1">On Map</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-4 fade-in-up"">
+        <div class="card h-100 shadow">
+          <img src="Enchey Monastery.jpg" class="card-img-top" alt="Monastery 4">
+          <div class="card-body text-center">
+            <h5 class="card-title">Enchey Monastery</h5>
+            <p class="card-text">Known for its vibrant Cham dance and heritage.</p>
+            <a href="#" class="btn btn-primary m-1">Read More</a>
+            <a href="#" class="btn btn-success m-1">360° View</a>
+            <a href="#" class="btn btn-info m-1">On Map</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-md-4 fade-in-up">
+        <div class="card h-100 shadow">
+          <img src="Phodong Monastery.jpeg" class="card-img-top" alt="Monastery 5">
+          <div class="card-body text-center">
+            <h5 class="card-title">Phodong Monastery</h5>
+            <p class="card-text">Famous for murals and architectural beauty.</p>
+            <a href="#" class="btn btn-primary m-1">Read More</a>
+            <a href="#" class="btn btn-success m-1">360° View</a>
+            <a href="#" class="btn btn-info m-1">On Map</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col-md-4 fade-in-up"">
+        <div class="card h-100 shadow">
+          <img src="Ralang Monastery.jpeg" class="card-img-top" alt="Monastery 6">
+          <div class="card-body text-center">
+            <h5 class="card-title">Ralang Monastery</h5>
+            <p class="card-text">Celebrated for its festivals and spiritual heritage.</p>
+            <a href="#" class="btn btn-primary m-1">Read More</a>
+            <a href="#" class="btn btn-success m-1">360° View</a>
+            <a href="#" class="btn btn-info m-1">On Map</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+        <!-- End Explore More Button -->
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-lg btn-outline-primary explore-btn">
+          Explore More Monasteries
+        </a>
+      </div>
+
+</section>
+
+
+
+
+
+<section class="archives-section py-5 fade-in-up">
+  <div class="container">
+    <h2 class="text-center mb-4">Digital Archives</h2>
+    <p class="text-center mb-5">Explore scanned manuscripts, murals, and rare historical documents.</p>
+
+    <!-- Search and Filter -->
+    <div class="row mb-4">
+      <div class="col-md-8">
+        <input type="text" id="archiveSearch" class="form-control" placeholder="Search archives...">
+      </div>
+      <div class="col-md-4">
+        <select id="archiveFilter" class="form-control">
+          <option value="all">All Categories</option>
+          <option value="manuscript">Manuscripts</option>
+          <option value="mural">Murals</option>
+          <option value="document">Documents</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Archive Grid -->
+    <div class="row g-4" id="archiveGrid">
+      <!-- Archive Card 1 -->
+      <div class="col-md-4 archive-item" data-category="manuscript">
+        <div class="card h-100">
+          <img src="lepcha manuscript.jpeg.jpg" class="card-img-top" alt="Manuscript 1">
+          <div class="card-body">
+            <h5 class="card-title">Ancient Manuscript</h5>
+            <p class="card-text">17th-century Buddhist scripture preserved digitally.</p>
+            <button class="btn btn-primary view-archive" data-img="archive1.jpg" data-title="Ancient Manuscript" data-desc="A rare 17th-century scripture digitized for preservation.">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Archive Card 2 -->
+      <div class="col-md-4 archive-item" data-category="mural">
+        <div class="card h-100">
+          <img src="tholung 5.jpg" class="card-img-top" alt="Mural 1">
+          <div class="card-body">
+            <h5 class="card-title">Monastery Mural</h5>
+            <p class="card-text">A beautifully preserved wall painting from Pemayangtse.</p>
+            <button class="btn btn-primary view-archive" data-img="archive2.jpg" data-title="Monastery Mural" data-desc="A vibrant mural depicting Buddhist deities and rituals.">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Archive Card 3 -->
+      <div class="col-md-4 archive-item" data-category="document">
+        <div class="card h-100">
+          <img src="Pemayangtse Monastery.jpg" class="card-img-top" alt="Document 1">
+          <div class="card-body">
+            <h5 class="card-title">Historical Document</h5>
+            <p class="card-text">Official monastery record from the 18th century.</p>
+            <button class="btn btn-primary view-archive" data-img="archive3.jpg" data-title="Historical Document" data-desc="An 18th-century monastery record digitized for access.">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Archive Modal -->
+<div id="archiveModal" class="modal">
+  <span class="close" onclick="closeArchiveModal()">&times;</span>
+  <div class="modal-content text-center">
+    <h3 id="modalArchiveTitle"></h3>
+    <img id="modalArchiveImg" src="" alt="" style="max-width: 100%; height: auto; margin: 20px 0;">
+    <p id="modalArchiveDesc"></p>
+    <a id="downloadArchive" class="btn btn-success" download>Download</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Page B: Virtual Tours (added here too) -->
+<section class="tours py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Virtual Monastery Tours</h2>
+    <div class="row g-4">
+      <!-- Tour Cards (same 3 tours as in virtual-tours.html) -->
+      <div class="col-md-4 fade-in-up">
+        <div class="card h-100 shadow">
+          <img src="rumtek.webp" class="card-img-top" alt="Rumtek Tour">
+          <div class="card-body text-center">
+            <h5 class="card-title">Rumtek Monastery</h5>
+            <p class="card-text">Explore the magnificent interiors of Rumtek in 360°.</p>
+            <!-- <a href="rumtek-tour.html" class="btn btn-success">Start 360° Tour</a> -->
+<a href="javascript:void(0)" class="btn btn-success m-1" onclick="openVR('-faBgLSaSsU')">360° View</a>
+
+            <!-- <a href="virtual-tours.html" class="btn btn-success">Start 360° Tour</a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 fade-in-up">
+        <div class="card h-100 shadow">
+          <img src="Pemayangtse Monastery.jpeg" class="card-img-top" alt="Rumtek Tour">
+          <div class="card-body text-center">
+            <h5 class="card-title">Pemayangtse Monastery</h5>
+            <p class="card-text">Explore the magnificent interiors of Pemayangtse Monastery in 360°.</p>
+            <a href="virtual-tours.html" class="btn btn-success">Start 360° Tour</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 fade-in-up">
+        <div class="card h-100 shadow">
+          <img src="Tashiding Monastery.jpg" class="card-img-top" alt="Rumtek Tour">
+          <div class="card-body text-center">
+            <h5 class="card-title">Rumtek Monastery</h5>
+            <p class="card-text">Explore the magnificent interiors of Tashiding Monastery in 360°.</p>
+            <a href="virtual-tours.html" class="btn btn-success">Start 360° Tour</a>
+          </div>
+        </div>
+      </div>
+      <!-- Repeat for 2 more tours -->
+    </div>
+
+    <!-- View More Button -->
+    <div class="text-center mt-5">
+      <a href="virtual-tours.html" class="btn btn-lg btn-outline-success explore-btn">
+        View All Virtual Tours
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Page C: Interactive Map -->
+<section class="map-section py-5">
+   
+
+   <div class="container">
+    <h2 class="text-center mb-4">Explore Monasteries on Map</h2>
+    <p class="text-center mb-4">Click on any marker to view details, virtual tour, and nearby attractions.</p>
+
+
+ <div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="gangtok-heritage-walk.jpeg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="gyalshing-heritage-walk.jpeg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="perbing-heritage-walk.jpeg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+  </div> 
+</section>
+
+
+
+<section class="events-section py-5 fade-in-up">
+  <div class="container">
+    <h2 class="text-center mb-4">Cultural Calendar & Events</h2>
+    <p class="text-center mb-5">Stay updated with upcoming festivals, rituals, and monastery events.</p>
+
+    <div class="row g-4">
+      <!-- Event Card 1 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="bhumchufes.jpg" class="card-img-top" alt="Event 1">
+          <div class="card-body">
+            <h5 class="card-title">Bhumchu Festival</h5>
+            <p class="card-text">Tashiding Monastery hosts the sacred water ritual every year.</p>
+            <p><strong>Date:</strong> 15th Feb 2026</p>
+            <a href="#" class="btn btn-primary">Book/Participate</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Card 2 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="fes2.jpg" class="card-img-top" alt="Event 2">
+          <div class="card-body">
+            <h5 class="card-title">Losar Festival</h5>
+            <p class="card-text">Celebrate the Tibetan New Year with traditional music and dance.</p>
+            <p><strong>Date:</strong> 21st Feb 2026</p>
+            <a href="#" class="btn btn-primary">Book/Participate</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Card 3 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="fes3.jpg" class="card-img-top" alt="Event 3">
+          <div class="card-body">
+            <h5 class="card-title">Mask Dance Festival</h5>
+            <p class="card-text">Witness traditional masked dances performed by monks.</p>
+            <p><strong>Date:</strong> 5th Mar 2026</p>
+            <a href="#" class="btn btn-primary">Book/Participate</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="app-section py-5 fade-in-up">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- App Image -->
+      <div class="col-md-6 text-center">
+        <img src="appcanva.jpg" alt="App Mockup" class="img-fluid app-mockup">
+      </div>
+
+      <!-- App Features -->
+      <div class="col-md-6">
+        <h2 class="mb-4">Smart Audio Guide App</h2>
+        <p class="mb-4">Experience monasteries with immersive audio guides that work both online and offline. Navigate easily using GPS or Bluetooth beacons.</p>
+        
+        <ul class="list-unstyled mb-4">
+          <li>✅ Narration in multiple languages</li>
+          <li>✅ GPS & Bluetooth beacon-based navigation</li>
+          <li>✅ Offline mode for remote areas</li>
+          <li>✅ Personalized recommendations</li>
+        </ul>
+
+        <!-- Download Buttons -->
+        <div class="d-flex gap-3">
+          <a href="#" class="btn btn-dark">📱 Download on App Store</a>
+          <a href="#" class="btn btn-success">📲 Get it on Google Play</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="impact-section py-5 fade-in-up">
+  <div class="container text-center">
+    <h2 class="mb-4">Our Impact</h2>
+    <p class="mb-5">Monastery360 is transforming how people experience, preserve, and connect with Sikkim’s cultural heritage.</p>
+
+    <div class="row">
+      <!-- Card 1 -->
+      <div class="col-md-3 mb-4">
+        <div class="impact-card p-4">
+          <div class="icon mb-3">🌍</div>
+          <h4>Boosting Tourism</h4>
+          <p>Making monasteries more accessible through immersive virtual tours.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-3 mb-4">
+        <div class="impact-card p-4">
+          <div class="icon mb-3">📜</div>
+          <h4>Preserving Culture</h4>
+          <p>Digitally archiving rare manuscripts, murals, and traditions.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 mb-4">
+        <div class="impact-card p-4">
+          <div class="icon mb-3">👥</div>
+          <h4>Empowering Communities</h4>
+          <p>Involving locals in participatory archiving and tourism services.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 mb-4">
+        <div class="impact-card p-4">
+          <div class="icon mb-3">📚</div>
+          <h4>Global Learning</h4>
+          <p>Supporting education and spiritual exploration worldwide.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impact Counters -->
+    <div class="row mt-5">
+      <div class="col-md-3">
+        <h3 class="counter" data-count="200">0</h3>
+        <p>Monasteries Mapped</p>
+      </div>
+      <div class="col-md-3">
+        <h3 class="counter" data-count="1500">0</h3>
+        <p>Rare Archives Digitized</p>
+      </div>
+      <div class="col-md-3">
+        <h3 class="counter" data-count="50000">0</h3>
+        <p>Tourists Reached</p>
+      </div>
+      <div class="col-md-3">
+        <h3 class="counter" data-count="25">0</h3>
+        <p>Community Partnerships</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="travel-section py-5 fade-in-up">
+  <div class="container text-center">
+    <h2 class="mb-4">Plan Your Journey</h2>
+    <p class="mb-4">
+      Easily plan your trip to Sikkim’s monasteries with our integrated travel services. 
+      Compare transport options, explore routes, and book your tickets securely.
+    </p>
+
+    <img src="sikkim travcel.jpg" alt="Travel Preview" class="img-fluid travel-img mb-4">
+
+    <a href="tourist.html" class="btn btn-primary btn-lg">✈️ Book Your Travel</a>
+  </div>
+</section>
+
+
+
+<footer class="footer-section text-white pt-5 pb-3">
+  <div class="container">
+    <div class="row">
+      
+      <!-- About -->
+      <div class="col-md-4 mb-4">
+        <h5>About Monastery360</h5>
+        <p>
+          A digital heritage platform preserving and promoting Sikkim’s monasteries 
+          through immersive tours, archives, and cultural experiences.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2 mb-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#home" class="footer-link">Home</a></li>
+          <li><a href="#history" class="footer-link">History</a></li>
+          <li><a href="#map" class="footer-link">Map</a></li>
+          <li><a href="#archives" class="footer-link">Archives</a></li>
+          <li><a href="#calendar" class="footer-link">Events</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-md-3 mb-4">
+        <h5>Contact</h5>
+        <p>Email: info@monastery360.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Sikkim, India</p>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-3 mb-4">
+        <h5>Follow Us</h5>
+        <div class="d-flex gap-3">
+          <a href="#" class="social-icon">🌐</a>
+          <a href="#" class="social-icon">📘</a>
+          <a href="#" class="social-icon">📸</a>
+          <a href="#" class="social-icon">▶️</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="text-center mt-4">
+      <p class="mb-0">&copy; 2025 Monastery360. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<!-- Chat Widget -->
+<div class="chat-widget">
+  <div class="chat-toggle" onclick="toggleChat()">
+    💬
+  </div>
+
+  <div id="chat-box" class="chat-box">
+    <div class="chat-header">
+      <span>AI Assistant</span>
+      <button class="close-chat" onclick="toggleChat()">✖</button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+      <p><strong>AI:</strong> Hi 👋 How can I help you today?</p>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" id="chat-input" placeholder="Type your message..." />
+      <button onclick="sendChat()">➤</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <script src="new.js"></script>
+</body>
+</html>

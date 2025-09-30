@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monastery Map - Monastery360</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <a class="navbar-brand" href="index.html">Monastery360</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link active" href="map.html">Map</a></li>
+      <li class="nav-item"><a class="nav-link" href="virtual-tours.html">Virtual Tours</a></li>
+      <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Title -->
+<section class="page-header text-center text-white d-flex align-items-center justify-content-center">
+  <div>
+    <h1>Explore Monasteries on Map</h1>
+    <p>Click on any marker to view details, virtual tour, and nearby attractions.</p>
+  </div>
+</section>
+
+<!-- Map Container -->
+<div id="map" style="width: 100%; height: 80vh;"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="map.js"></script>
+</body>
+</html>

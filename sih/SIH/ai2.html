@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Agent & Tour Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1A202C; /* Dark background */
+        }
+
+        /* Custom scrollbar for a modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4A5568; /* Darker scrollbar thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #718096; /* Lighter on hover */
+        }
+        
+        /* Message appearance animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .message-bubble {
+            animation: fadeInUp 0.3s ease-in-out;
+        }
+
+        /* Typing indicator animation */
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: #A0AEC0; /* Lighter dots for dark theme */
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen antialiased">
+
+    <!-- Header -->
+    <header class="bg-gray-900/80 backdrop-blur-sm shadow-lg py-4 px-6 z-10">
+        <h1 class="text-3xl font-bold text-center text-gray-100">
+            AI Chat Agent & Tour Planner
+        </h1>
+    </header>
+
+    <!-- Main Chat Container -->
+    <main id="chat-container" class="flex-1 p-6 overflow-y-auto">
+        <div id="chat-messages" class="flex flex-col space-y-4">
+            <!-- Initial AI Welcome Message -->
+            <div class="flex justify-start message-bubble">
+                <div class="bg-gray-700 text-gray-200 py-3 px-5 rounded-2xl max-w-lg shadow-md">
+                    <p>Hello! I'm your AI assistant. Ask me anything or let me plan your next trip! Where would you like to go? ✈️</p>
+                </div>
+            </div>
+            <!-- Chat messages will be dynamically added here -->
+        </div>
+    </main>
+
+    <!-- Message Input Form -->
+    <footer class="bg-gray-900/80 backdrop-blur-sm p-4 border-t border-gray-700">
+        <form id="chat-form" class="relative flex items-center max-w-4xl mx-auto">
+            <input 
+                type="text" 
+                id="message-input" 
+                placeholder="e.g., 'Plan a 5-day trip to Goa...'" 
+                autocomplete="off"
+                class="w-full py-3 px-6 pr-16 bg-gray-700 border border-gray-600 text-gray-200 placeholder-gray-400 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+            <button 
+                type="submit"
+                id="send-button"
+                class="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full font-semibold hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-transform transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </form>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatForm = document.getElementById('chat-form');
+            const messageInput = document.getElementById('message-input');
+            const sendButton = document.getElementById('send-button');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatContainer = document.getElementById('chat-container');
+
+            // --- Gemini API Configuration ---
+            const API_KEY = "AIzaSyAJ9KX3lekl2H4wceP_DUrh4iiRFCkxuxY"; // IMPORTANT: Add your Gemini API Key here for the agent to work.
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
+            
+            const scrollToBottom = () => {
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            };
+
+            const appendMessage = (sender, messageHtml) => {
+                const messageWrapper = document.createElement('div');
+                messageWrapper.classList.add('flex', 'message-bubble');
+
+                const messageBubble = document.createElement('div');
+                messageBubble.innerHTML = messageHtml;
+                messageBubble.classList.add('py-3', 'px-5', 'rounded-2xl', 'max-w-lg', 'shadow-md', 'break-words');
+
+                if (sender === 'user') {
+                    messageWrapper.classList.add('justify-end');
+                    messageBubble.classList.add('bg-gradient-to-br', 'from-blue-500', 'to-purple-600', 'text-white');
+                } else {
+                    messageWrapper.classList.add('justify-start');
+                    messageBubble.classList.add('bg-gray-700', 'text-gray-200');
+                }
+                
+                messageWrapper.appendChild(messageBubble);
+                chatMessages.appendChild(messageWrapper);
+                scrollToBottom();
+                return messageBubble;
+            };
+
+            const handleFormSubmit = async (e) => {
+                e.preventDefault();
+                const userMessage = messageInput.value.trim();
+                if (!userMessage) return;
+
+                // Check for API Key before proceeding
+                if (!API_KEY) {
+                    const errorBubble = appendMessage('ai', `<p><strong>Configuration Error:</strong> Please add your Gemini API key inside the script tag in this HTML file to enable the AI. 🔑</p>`);
+                    // Style the error bubble differently
+                    errorBubble.classList.remove('bg-gray-700');
+                    errorBubble.classList.add('bg-red-500', 'text-white');
+                    return; // Stop the function here
+                }
+
+                appendMessage('user', `<p>${userMessage}</p>`);
+                messageInput.value = '';
+                toggleLoadingState(true);
+
+                const loadingBubble = appendMessage('ai', 
+                    `<div class="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>`
+                );
+
+                try {
+                    const aiResponseText = await callGeminiAPI(userMessage);
+                    
+                    displayAIResponse(loadingBubble, aiResponseText);
+                    toggleLoadingState(false);
+                    messageInput.focus();
+
+                } catch (error) {
+                    console.error('API Call Error:', error);
+                    loadingBubble.innerHTML = '<p>Sorry, I encountered an error. Please try again later. 😥</p>';
+                    loadingBubble.classList.remove('bg-gray-700');
+                    loadingBubble.classList.add('bg-red-500', 'text-white');
+                    toggleLoadingState(false);
+                    messageInput.focus();
+                }
+            };
+
+            const displayAIResponse = (bubble, text) => {
+                bubble.innerHTML = `<p>${text}</p>`;
+                scrollToBottom();
+            };
+
+            const callGeminiAPI = async (prompt) => {
+                // System instruction to guide the AI's personality
+                const systemInstruction = {
+                    parts: [{ text: `
+You are a multi-talented AI assistant with two primary roles: a knowledgeable expert and an expert tour planner.
+
+**Role 1: Knowledgeable Expert**
+When the user asks a general question, provide accurate, helpful, and concise answers on a wide variety of topics. Maintain a friendly and helpful tone.
+
+**Role 2: Expert Tour Planner**
+When the user wants to create a tour plan, you MUST act as a proactive and detailed travel agent.
+1.  **Analyze the Request:** Immediately check if the user has provided the destination, duration, and a general budget.
+2.  **Act Directly:** If the core details (destination, duration, budget) are present, **do not ask follow-up questions**. Proceed directly to create a detailed itinerary. Make reasonable assumptions for missing preferences (like interests), suggesting a balanced mix of popular activities (e.g., sightseeing, local cuisine, relaxation).
+3.  **Ask Only if Necessary:** Only if critical information like the destination is missing, should you ask for clarification.
+4.  **Create a Detailed Itinerary:** Generate a day-by-day plan. For each plan, you must include:
+    -   **Accommodation 🏨:** Suggest 2-3 hotel options fitting the budget, with estimated costs per night.
+    -   **Places to Visit 🗺️:** List main attractions for each day, including a mix of popular and unique spots.
+    -   **Transportation 🚗:** Mention available transport services (like local taxis, ride-sharing, or private cabs).
+    -   **Food 🍽️:** Recommend local dishes or famous restaurants.
+5.  **Formatting:** Use markdown (like bolding for titles) and emojis to make the plan easy to read and engaging.
+
+Your primary goal is to provide a complete and useful plan right away if the user gives you enough information to start. Avoid unnecessary back-and-forth.`
+                    }]
+                };
+
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    systemInstruction: systemInstruction,
+                };
+
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+                const data = await response.json();
+                const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (!text) throw new Error("Invalid API response.");
+                
+                // Simple markdown to HTML conversion
+                return text
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    .replace(/\n/g, '<br>');
+            };
+
+            const toggleLoadingState = (isLoading) => {
+                messageInput.disabled = isLoading;
+                sendButton.disabled = isLoading;
+                if (isLoading) {
+                    sendButton.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    sendButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            };
+
+            chatForm.addEventListener('submit', handleFormSubmit);
+
+            messageInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleFormSubmit(e);
+                }
+            });
+
+            messageInput.focus();
+        });
+    </script>
+</body>
+</html>
+

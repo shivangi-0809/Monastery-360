@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rumtek Monastery History</title>
+  <link rel="stylesheet" href="rumtekhis.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+    /* Styles for the voice button */
+    .voice-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-left: 8px;
+      padding: 0;
+      vertical-align: middle;
+    }
+    .voice-btn:hover {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>Rumtek Monastery</h1>
+</section>
+
+<div class="container my-5">
+  <div class="row">
+    <aside class="col-md-3">
+      <div class="toc">
+        <h5>Contents</h5>
+        <a href="#history">History</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#significance">Religious Significance</a>
+        <a href="#festivals">Festivals</a>
+      </div>
+    </aside>
+
+    <main class="col-md-9">
+      <div id="history" class="content-section">
+        <h2>History <button class="voice-btn" onclick="readSection('history')">🔊</button></h2>
+        <p>
+          Rumtek Monastery, also known as the Dharmachakra Centre, was originally built in the mid-18th century under the direction of the 12th Karmapa. After the 16th Karmapa fled Tibet in 1959, he rebuilt Rumtek in the 1960s as the main seat of the Karma Kagyu lineage in exile.
+           High in the Himalayas, nestled between Tibet, Bhutan, and Nepal and is the north eastern Indian state of Sikkim.
+
+Sikkim was a small independent Buddhist kingdom until the 1970s, after which it became a state of India. Buddhism still plays an important role in the life of the state (the state motto is Conqueror of the Three Worlds, the name of a protective Buddha aspect). The largest Buddhist monastery in Sikkim is Rumtek monastery, which is the main seat-in-exile of Thaye Dorje, His Holiness the 17th Gyalwa Karmapa.
+
+Wangchuk Dorje, the 9th Karmapa, founded the original Rumtek monastery in 1734 with the patronage of the king, the fourth Chogyal Gyurmed Namgyal. It was then, and is today, the seat of the Kagyu tradition in Sikkim.   
+        </p>
+        <img src="rumtek.webp" alt="Rumtek Monastery view">
+        <p>
+          The monastery has since become one of the most important centers of Tibetan Buddhism outside Tibet, housing rare texts, artifacts, and sacred relics brought from Tsurphu Monastery in Tibet.
+        </p>
+      </div>
+
+      <div id="architecture" class="content-section">
+        <h2>Architecture <button class="voice-btn" onclick="readSection('architecture')">🔊</button></h2>
+        <p>
+          Rumtek Monastery’s design reflects traditional Tibetan architectural styles with brightly colored murals, golden stupas, and intricately carved woodwork. The three-story structure houses a golden stupa, relics, and the famous “Black Hat” belonging to the Karmapas.
+        High in the Himalayas, nestled between Tibet, Bhutan, and Nepal and is the north eastern Indian state of Sikkim.
+
+Sikkim was a small independent Buddhist kingdom until the 1970s, after which it became a state of India. Buddhism still plays an important role in the life of the state (the state motto is Conqueror of the Three Worlds, the name of a protective Buddha aspect). The largest Buddhist monastery in Sikkim is Rumtek monastery, which is the main seat-in-exile of Thaye Dorje, His Holiness the 17th Gyalwa Karmapa.
+
+Wangchuk Dorje, the 9th Karmapa, founded the original Rumtek monastery in 1734 with the patronage of the king, the fourth Chogyal Gyurmed Namgyal. It was then, and is today, the seat of the Kagyu tradition in Sikkim.
+        </p>
+        <img src="tholung 5.jpg" alt="Architecture of Rumtek Monastery">
+      </div>
+
+      <div id="significance" class="content-section">
+        <h2>Religious Significance <button class="voice-btn" onclick="readSection('significance')">🔊</button></h2>
+        <p>
+          Rumtek serves as the international headquarters of the Karmapa and the Karma Kagyu school of Tibetan Buddhism. It is also a major center for Buddhist learning, meditation, and spiritual practice.
+        </p>
+      </div>
+
+      <div id="festivals" class="content-section">
+        <h2>Festivals <button class="voice-btn" onclick="readSection('festivals')">🔊</button></h2>
+        <p>
+          The monastery hosts important festivals such as the <strong>Kagyed Dance</strong> (December) and <strong>Losar</strong> (Tibetan New Year). Monks perform masked dances symbolizing the triumph of good over evil, attracting pilgrims and tourists alike.
+        </p>
+        <img src="fes2.jpg" alt="Monks performing ritual at Rumtek">
+      </div>
+
+      <div class="action-buttons">
+        <a href="rumtek-tour.html" class="btn btn-success">🌀 360° View</a>
+        <a href="rumtek-archives.html" class="btn btn-warning">📜 Manuscripts & Docs</a>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+  // --- SCRIPT MODIFIED FOR INDIAN ENGLISH ACCENT AND CLEARER TONE ---
+
+  let preferredVoice = null;
+
+  // This function finds and sets the desired voice from the browser's list of voices.
+  function setVoice() {
+    const voices = window.speechSynthesis.getVoices();
+    // Prioritize finding an Indian English ('en-IN') voice.
+    preferredVoice = voices.find(voice => voice.lang === 'en-IN');
+
+    // If no Indian English voice is found, fallback to a UK English voice for clarity.
+    if (!preferredVoice) {
+      preferredVoice = voices.find(voice => voice.lang === 'en-GB');
+    }
+  }
+
+  // The list of voices is loaded asynchronously, so we wait for the 'voiceschanged' event.
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = setVoice;
+  }
+  // Call it once to try and load voices immediately.
+  setVoice(); 
+
+  // Updated Text-to-Speech function to read specific sections
+  function readSection(sectionId) {
+    window.speechSynthesis.cancel(); // Stop any speech that is currently playing
+
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    // const headingText = section.querySelector('h2').firstChild.textContent.trim();
+    // const paragraphs = section.querySelectorAll('p');
+    // const paragraphText = Array.from(paragraphs).map(p => p.textContent).join(' ');
+    // const contentToRead = ${headingText}. ${paragraphText};
+
+    const utterance = new SpeechSynthesisUtterance(contentToRead);
+
+    // If we found a preferred voice (en-IN or en-GB), use it.
+    if (preferredVoice) {
+      utterance.voice = preferredVoice;
+    } else {
+      // If no specific voice was found, still request the Indian English language.
+      // The browser will use its default for this language.
+      utterance.lang = "en-IN";
+    }
+
+    // Adjust the rate and pitch for a softer, clearer tone.
+    utterance.rate = 0.95; // Slightly slower for clarity (1 is default).
+    utterance.pitch = 1;   // Neutral pitch (1 is default).
+
+    window.speechSynthesis.speak(utterance);
+  }
+</script>
+
+</body>
+</html>

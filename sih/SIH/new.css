@@ -1,0 +1,659 @@
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+   background: url("image (5).png") no-repeat center center/cover; 
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.overlay h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.overlay p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+/* Sidebar */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0; left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.sidebar a {
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #ddd;
+  display: block;
+  transition: 0.2s;
+}
+
+.sidebar a:hover {
+  color: #fff;
+  background: #333;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 2rem;
+  color: #fff;
+}
+
+/* Responsive Navbar (Bootstrap override) */
+.navbar-dark .navbar-toggler {
+  border: none;
+}
+/* CTA Buttons */
+.cta-buttons .btn {
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cta-buttons .btn:hover {
+  transform: scale(1.05);
+}
+/* Hamburger Icon */
+.hamburger {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+/* Monasteries Section */
+.monasteries {
+  background: #f8f9fa;
+}
+
+.monasteries h2 {
+  font-weight: bold;
+  color: #333;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+
+/* Scroll Animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Explore More Button */
+.explore-btn {
+  padding: 14px 40px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.explore-btn:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+
+
+
+
+/* Page Header */
+.page-header {
+  height: 40vh;
+  background: url("virtual-bg.jpg") no-repeat center center/cover;
+  position: relative;
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.page-header div {
+  position: relative;
+  z-index: 2;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+}
+
+/* Virtual Tours Cards */
+.tours .card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+
+
+
+/* Page Header */
+.page-header {
+  height: 30vh;
+  background: url("map-bg.jpg") no-repeat center center/cover;
+  position: relative;
+}
+.page-header::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+.page-header div {
+  position: relative;
+  z-index: 2;
+}
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.page-header p {
+  font-size: 1.2rem;
+}
+
+
+
+
+.events-section .card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.events-section .card:hover {
+  transform: translateY(-10px);
+}
+
+.events-section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.events-section p {
+  font-size: 1rem;
+}
+
+
+
+.archives-section .card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.archives-section .card:hover {
+  transform: translateY(-10px);
+}
+
+/* Modal */
+#archiveModal {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  padding-top: 50px;
+}
+
+#archiveModal .modal-content {
+  background: #fff;
+  margin: auto;
+  padding: 20px;
+  max-width: 700px;
+  border-radius: 15px;
+}
+#archiveModal .close {
+  position: absolute;
+  top: 20px; right: 35px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.app-section {
+  background: #f8f9fa;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.app-section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.app-section ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.app-mockup {
+  max-width: 300px;
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+.impact-section {
+  background: #ffffff;
+}
+
+.impact-card {
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.impact-card:hover {
+  transform: translateY(-8px);
+}
+
+.impact-card h4 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.counter {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0ba6df;
+}
+
+
+
+
+
+
+.travel-section {
+  background: #f0f8ff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.travel-section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.travel-img {
+  max-width: 600px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+
+
+
+.footer-section {
+  background: #0b1a2a; /* deep navy theme */
+  color: #ffffff;
+}
+
+.footer-section h5 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.footer-link {
+  color: #bbbbbb;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+.footer-link:hover {
+  color: #0ba6df;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icon:hover {
+  transform: scale(1.2);
+  color: #0ba6df;
+}
+
+.footer-section p {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+
+
+
+
+
+
+
+/* Floating Chat Toggle Button */
+ .chat-widget {
+  position: fixed;
+  bottom: 20px;
+  left: 20px; /* ⬅ bottom-left */
+  z-index: 9999;
+} 
+
+
+
+
+
+.chat-toggle {
+  background: linear-gradient(135deg, #ff6b6b, #ff9f43);
+  color: white;
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+.chat-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Chat Box */
+.chat-box {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 320px;
+  height: 420px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+/* Chat Header */
+.chat-header {
+  background: #ff6b6b;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header .close-chat {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  font-size: 14px;
+  background: #f9f9f9;
+}
+
+.chat-messages p {
+  margin: 8px 0;
+}
+
+/* Chat Input Area */
+.chat-input-area {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background: white;
+}
+
+.chat-input-area input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 8px 12px;
+  outline: none;
+}
+
+.chat-input-area button {
+  margin-left: 8px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+
+.role-selection {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.role-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.roles-cards {
+  padding: 20px 40px;
+  background: #0ba6df;
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.roles-cards:hover {
+  background: #0878a3;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  background: #0ba6df;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.form-container button:hover {
+  background: #0878a3;
+}
+
+
+
+
+.dashboard {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.dashboard-options {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.cardss {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  width: 250px;
+  margin: 10px;
+}
+
+.cardss h3 {
+  margin-bottom: 10px;
+  color: #2b4c7e;
+}
+
+.cardss button {
+  background: #2b4c7e;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.roles-cards button:hover {
+  background: #1d3557;
+}
+
+
+
+.signup-page {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url("bgbhai.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+
+
+
+
+.vr-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95);
+  z-index: 5000;
+  justify-content: center;
+  align-items: center;
+}
+
+.vr-modal iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.close-vr {
+  position: absolute;
+  top: 20px; right: 30px;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  z-index: 5001;
+}
